@@ -1,0 +1,35 @@
+<mat-accordion>
+  <mat-expansion-panel *ngIf="node" class="node">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="header">
+        <div class="title">
+          {{ node.name || 'Unknown' }}
+        </div>
+        <div class="description">
+          <span class="url">
+            {{ node.url }}
+          </span>
+        </div>
+      </mat-panel-title>
+      <mat-panel-description class="panel-desc">
+        <app-status
+          [loading]="node.loading"
+          [online]="node.online"
+        ></app-status>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="blocks-container">
+      <ng-container *ngFor="let block of node.blocks">
+        <div class="block-container">
+          <div class="block-index">
+            {{ '00' + block.attributes.index }}
+          </div>
+          <div class="block-content">
+            {{ block.attributes.data }}
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

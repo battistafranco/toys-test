@@ -1,0 +1,16 @@
+<div class="wrapper" *ngIf="loading; else loaded">
+  <div class="loading-ellipsis">
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<ng-template #loaded>
+  <ul [ngClass]="{ wrapper: true, success: online, danger: !online }">
+    <li>
+      <span class="text">
+        {{ (online ? 'Online' : 'Offline') | uppercase }}
+      </span>
+    </li>
+  </ul>
+</ng-template>
